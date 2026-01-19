@@ -1,43 +1,49 @@
-// НОК Строительство - JavaScript функциональность
+// ================================================
+// НОК Строительство - Основная функциональность JavaScript
+// Центр оценки квалификации ООО "Свой дом"
+// Версия: 1.0.0
+// Дата: 19.01.2026
+// ================================================
 
+/**
+ * Инициализация всех компонентов при загрузке DOM
+ * Вызывается автоматически после полной загрузки HTML структуры
+ */
 document.addEventListener('DOMContentLoaded', function() {
-    // Плавная прокрутка для навигации
-    initSmoothScrolling();
-    
-    // Анимации при скролле
-    initScrollAnimations();
-    
-    // Валидация формы
-    initFormValidation();
-    
-    // Маска для телефона
-    initPhoneMask();
-    
-    // Счетчики статистики
-    initCounters();
-    
-    // Автоматическое скрытие уведомлений
-    initAlertAutoHide();
-    
-    // Обработка отправки форм
-    initFormSubmission();
+    // Инициализация основных модулей
+    initSmoothScrolling();    // Плавная прокрутка для навигации
+    initScrollAnimations();   // Анимации при скролле (AOS)
+    initFormValidation();     // Валидация форм Bootstrap
+    initPhoneMask();          // Маска для телефонных номеров
+    initCounters();           // Анимированные счетчики статистики
+    initAlertAutoHide();      // Автоматическое скрытие уведомлений
+    initFormSubmission();     // Обработка отправки форм
 });
 
-// Плавная прокрутка
+/**
+ * Инициализация плавной прокрутки для якорных ссылок
+ * Обрабатывает все ссылки, начинающиеся с #
+ * Учитывает высоту фиксированного header
+ */
 function initSmoothScrolling() {
+    // Находим все якорные ссылки на странице
     const links = document.querySelectorAll('a[href^="#"]');
-    
+
     links.forEach(link => {
         link.addEventListener('click', function(e) {
+            // Предотвращаем стандартное поведение браузера
             e.preventDefault();
-            
+
+            // Получаем ID целевого элемента (убираем # из href)
             const targetId = this.getAttribute('href').substring(1);
             const targetElement = document.getElementById(targetId);
-            
+
             if (targetElement) {
+                // Вычисляем позицию с учетом высоты фиксированного header
                 const headerHeight = document.querySelector('.header-section').offsetHeight;
-                const targetPosition = targetElement.offsetTop - headerHeight - 20;
-                
+                const targetPosition = targetElement.offsetTop - headerHeight - 20; // 20px отступ
+
+                // Плавная прокрутка к целевому элементу
                 window.scrollTo({
                     top: targetPosition,
                     behavior: 'smooth'

@@ -1,0 +1,37 @@
+# Robots.txt для сайта НОК в строительстве и архитектуре
+# Центр оценки квалификации ООО "Свой дом"
+
+User-agent: *
+Allow: /
+
+# Разрешить индексацию основных страниц
+Allow: /index.html
+Allow: /consultation.html
+
+# Запретить индексацию служебных файлов
+Disallow: /css/
+Disallow: /js/
+Disallow: /img/
+Disallow: /admin/
+Disallow: /private/
+
+# Запретить индексацию файлов с расширениями
+Disallow: /*.css$
+Disallow: /*.js$
+Disallow: /*.json$
+Disallow: /*.md$
+Disallow: /*.txt$
+
+# Разрешить основным поисковым системам полный доступ
+User-agent: Googlebot
+Allow: /
+
+User-agent: Yandex
+Allow: /
+
+# Sitemap
+Sitemap: https://todmiv.github.io/landing_nok/sitemap.xml
+
+# Контактная информация для вебмастеров
+# Email: dsgribkov.noso@mail.ru
+# Site: https://www.sronoso.ru
